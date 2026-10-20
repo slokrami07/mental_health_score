@@ -7,9 +7,9 @@
 // --- Global Configuration & State ---
 const CONFIG = {
   // Use window origin if hosted on the same domain as FastAPI, else default to local 8000
-  defaultApiUrl: window.location.origin.includes('8000') 
-    ? `${window.location.origin}/predict` 
-    : 'https://mental-health-score-jo0q.onrender.com/',
+  defaultApiUrl: window.location.origin.includes('8000')
+    ? `${window.location.origin}/predict`
+    : 'https://mental-health-score-jo0q.onrender.com/predict',
   gaugeCircumference: 2 * Math.PI * 76 // r = 76 => ~477.52
 };
 
@@ -391,18 +391,18 @@ function initFormSubmission() {
     // Construct Payload according to StudentData Pydantic schema
     const formData = new FormData(elements.form);
     const payload = {
-      age                     : parseInt(formData.get('age'), 10),
-      gender                  : formData.get('gender'),
-      country                 : formData.get('country') || 'Other',
-      academic_level          : formData.get('academic_level'),
-      most_used_platform      : formData.get('most_used_platform'),
-      purpose_of_use          : formData.get('purpose_of_use'),
-      avg_daily_usage_hours   : parseFloat(formData.get('avg_daily_usage_hours')),
-      daily_unlocks           : parseInt(formData.get('daily_unlocks'), 10),
-      study_hours             : parseFloat(formData.get('study_hours')),
-      physical_activity_hours : parseFloat(formData.get('physical_activity_hours')),
-      sleep_hours_per_night   : parseFloat(formData.get('sleep_hours_per_night')),
-      stress_level            : formData.get('stress_level')
+      age: parseInt(formData.get('age'), 10),
+      gender: formData.get('gender'),
+      country: formData.get('country') || 'Other',
+      academic_level: formData.get('academic_level'),
+      most_used_platform: formData.get('most_used_platform'),
+      purpose_of_use: formData.get('purpose_of_use'),
+      avg_daily_usage_hours: parseFloat(formData.get('avg_daily_usage_hours')),
+      daily_unlocks: parseInt(formData.get('daily_unlocks'), 10),
+      study_hours: parseFloat(formData.get('study_hours')),
+      physical_activity_hours: parseFloat(formData.get('physical_activity_hours')),
+      sleep_hours_per_night: parseFloat(formData.get('sleep_hours_per_night')),
+      stress_level: formData.get('stress_level')
     };
 
     if (!validateForm(payload)) {
@@ -430,7 +430,7 @@ function initFormSubmission() {
           if (errJson.detail) {
             errDetail = typeof errJson.detail === 'string' ? errJson.detail : JSON.stringify(errJson.detail);
           }
-        } catch (_) {}
+        } catch (_) { }
         throw new Error(errDetail);
       }
 
