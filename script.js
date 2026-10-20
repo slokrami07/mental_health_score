@@ -9,7 +9,7 @@ const CONFIG = {
   // Use window origin if hosted on the same domain as FastAPI, else default to local 8000
   defaultApiUrl: window.location.origin.includes('8000') 
     ? `${window.location.origin}/predict` 
-    : 'http://127.0.0.1:8000/predict',
+    : 'https://mental-health-score-jo0q.onrender.com/',
   gaugeCircumference: 2 * Math.PI * 76 // r = 76 => ~477.52
 };
 
